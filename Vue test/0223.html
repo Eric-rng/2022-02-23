@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div id="box">
+        <!-- <input type="text" v-model="msg" @keyup.enter="push"> -->
+        单价：<input type="text" v-model="size"> <br> 数量：
+        <input type="text" v-model="num"> <br> 总价：{{ count }}
+
+    </div>
+
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.14/vue.js"></script>
+    <script>
+        var vue = new Vue({
+
+            el: '#box',
+            data: {
+                size: '',
+                num: '',
+            },
+            methods: {
+                push() {
+                    clearInterval(this.timeid)
+                    this.timeid = setTimeout(() => {
+                        if (this.msg != '') {
+                            console.log(this.msg);
+                        }
+
+                    }, 1000)
+
+                }
+            },
+            computed: {
+                count() {
+                    return this.size * this.num
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
